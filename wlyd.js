@@ -1,8 +1,9 @@
 const jobname = 'wlyd'
 const $ = Env(jobname)
 const user = {}
+
 let wlydbody= $.isNode() ? (process.env.wlydbody ? process.env.wlydbody : "") : ($.getdata('wlydbody') ? $.getdata('wlydbody') : "")
-//let wlydbody= `813453063&813476577&813472739&813456688&813476756&813466329&813472357&813470411`
+//let wlydbody= `813480936&813474150`
 let uMessage= $.isNode() ? (process.env.uMessage ? process.env.uMessage : "") : ($.getdata('uMessage') ? $.getdata('uMessage') : "")
 //let uMessage = `{"channel":"AppStore","userid":"7c13ea054085403caf77d5f30406e1aa","appversioncode":"201","brand":"apple","sysname":"wlkd","appversion":"2.0.1","optime":"1631861236","os":"ios","token":"fd428a0047924a7595cadfba8b5fd204","smid":"D2NJe1+ZyHrTOI4XHJrOCsZxTd0MZhH7BTakzOYA5sy+wX74","model":"iPhone_11","osversion":"14.7.1","device_userid":""}`
 let wlydbodyArr = []
@@ -68,12 +69,14 @@ else {
 }else{
     console.log(`共${wlydbodyArr.length}个阅读body`)
             for (let k = 0; k < wlydbodyArr.length; k++) {
-
+                let time = randomNum(30000,40000)
+                randomtime = time/1000
                 wlydbody1 = wlydbodyArr[k];
                 
-                console.log(`--------第 ${k + 1} 次阅读中--------\n请等待31秒\n`)
-                    await wlyd(wlydbody1)
-                await $.wait(31000);
+                console.log(`--------第 ${k + 1} 次阅读中--------\n请等待${randomtime}秒\n`)
+                    
+                await $.wait(time);
+                await wlyd(wlydbody1);
                 console.log("\n\n")
             }
         }})()
@@ -96,7 +99,20 @@ else {
       ).toLocaleString()} =====================\n`
     );
  */
-
+    function randomNum(minNum,maxNum){ 
+        switch(arguments.length){ 
+        case 1: 
+         return parseInt(Math.random()*minNum+1); 
+        break; 
+        case 2: 
+         return parseInt(Math.random()*(maxNum-minNum+1)+minNum); 
+        break; 
+        default: 
+         return 0; 
+        break; 
+        } 
+       } 
+       
 async function getwlydbody() {
     if ($request.url.match(/\/wlkdapi.zhongchuanjukan.com\/article\/detail/)) {
         
