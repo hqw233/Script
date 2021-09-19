@@ -48,6 +48,7 @@ if (typeof $request !== "undefined") {
         console.log(`--------账号 ${k+1} 签到任务执行中--------\n`)
         await wlqd(token1)
             await $.wait(1000);
+        await wleverydaybox(token1);
         console.log("\n\n")
     }
 
@@ -109,6 +110,8 @@ function wlqd(token) {
         })
     })
 }
+
+
 async function getuMessage() {
     if ($request.url.match(/\/wlkdapi.zhongchuanjukan.com\/account\/getTodayDetail/)) {
         
@@ -134,6 +137,49 @@ async function getuMessage() {
         }
     
       }
+
+      function wleverydaybox(token) {
+        return new Promise((resolve, reject) => {
+                const url = "https://wlkdapi.zhongchuanjukan.com/hottask/profit";
+                const headers = {
+                            'Host': 'wlkdapi.zhongchuanjukan.com',
+                            'Content-Type': 'application/json;charset=utf-8',
+                            'Origin': 'https://wlkdapi.zhongchuanjukan.com',
+                            'Connection': 'keep-alive',
+                            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+                            //'Referer': 'https://wlkdapi.zhongchuanjukan.com/task/view/?sysname=wlkd&token='+uMessage.token+'&device_userid=&brand=apple&model=iPhone_11&optime='+ts()+'&sppid=fa9aeb1675c01f3b8218720dfe29ff77'
+                            //'Referer': 'https://wlkdapi.zhongchuanjukan.com/task/view/?sysname=wlkd&token='+uMessage.token+'optime='+ts(),
+                            //'Referer':'https://wlkdapi.zhongchuanjukan.com/task/view/?sysname=wlkd&token='+uMessage.token+'&device_userid=&brand=apple&model=iPhone_11&optime=1631813473&sppid=fa9aeb1675c01f3b8218720dfe29ff77'
+                        };
+    
+            const body = JSON.stringify({sysname:'wlkd',token : token,act_type:"redbean",});
+            //const body = `{"token" : "fd428a0047924a7595cadfba8b5fd204","sysname":"wlkd"}`
+            const request = {
+                url: url,
+                headers: headers,
+                body: body
+            };
+    
+            $.post(request, async(error, response, data) => {
+                try {
+                    /* const profit = JSON.parse(data)
+                    console.log(profit) */
+                    if(JSON.parse(data).ret_code == 1 ){
+                    console.log(`签到奖励：${JSON.parse(data).profit}`);
+                }else if(JSON.parse(data).ret_code == 0)
+                {
+                    console.log(`已经领过每日奖励了`)
+                    //$.log(data)
+                }else{
+                    console.log(`获取每日奖励异常`)}
+                } catch (e) {
+                    $.log(e)
+                }
+                resolve();
+            })
+        })
+    }
+    
 function ts(inputTime) {
     if ($.isNode()) {
         TS = Math.round((new Date().getTime() +
