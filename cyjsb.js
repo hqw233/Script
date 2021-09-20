@@ -1,12 +1,14 @@
 
 
 /* 
-新手写的简单脚本
+新手写的简单脚本 估计还要完善
 好像不支持圈x 
 由于对请求体与响应体不会解密  
 请忽略输出日志
-具体收益以软件红包为准
+具体收益以软件红包为准 应该一天几毛
 支持多账号
+
+食用方法  ：去答题页面答题看个视频广告即可获取cytoken 和 cybody
 
 Rewrite:
 https://speedcy.springglasses.com/api/app/ios/credit/coin
@@ -15,7 +17,7 @@ https://raw.githubusercontent.com/hqw233/Script/main/cyjsb.js
 mitm :
 speedcy.springglasses.com
 
-脚本执行一次刷5次红包 建议每5分钟执行一次
+脚本执行一次刷5次红包 单账号建议每5分钟执行一次
 */
 
 const jobname = '成语极速版'
@@ -27,12 +29,9 @@ let cybodys = ""
 let cytoken= $.isNode() ? (process.env.cytoken ? process.env.cytoken : "") : ($.getdata('cytoken') ? $.getdata('cytoken') : "")
 let cytokenArr = []
 let cytokens = ""
-nowTime = new Date().getTime();
-console.log(nowTime)
+
 if (!cybody) {
-    $.msg($.name, '【提示】请去闯关看个广告获取body', '不知道说啥好', {
-        "open-url": "给您劈个叉吧"
-    });
+    $.msg($.name, '【提示】请去答题看个广告获取body');
     $.done()
 }
 else if (cybody.indexOf("&") == -1) {
@@ -56,9 +55,7 @@ else {
 
    
    if (!cytoken) {
-    $.msg($.name, '【提示】请去闯关看个广告获取token', '不知道说啥好', {
-        "open-url": "给您劈个叉吧"
-    });
+    $.msg($.name, '【提示】请去答题看个广告获取token');
     $.done()
 }
 else if (cytoken.indexOf("&") == -1) {
