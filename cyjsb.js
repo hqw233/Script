@@ -91,9 +91,9 @@ else {
                 
                 console.log(`--------第 ${k + 1} 个账号--------\n`)
                 for (let i = 0; i < 5; i++){
-                    let time = randomNum(30000,40000)
+                    let time = randomNum(30000,35000)
                     randomtime = time/1000
-                    console.log(`随机延迟${randomtime}秒`)    
+                    console.log(`随机延时${randomtime}秒`)    
                     await $.wait(time);
                     nowTime = new Date().getTime();
                     //console.log(nowTime)
