@@ -16,7 +16,8 @@ const $ = Env(jobname)
 
 async function all() {
     //nodejs运行
-    
+    await dailysign();
+    await $.wait(2000);
     await share();
     await $.wait(1000);
     await jsshare();
@@ -120,7 +121,38 @@ async function all() {
     })
 }
 
+function dailysign() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ocean.shuqireader.com/api/activity/xapi/signin/v5/signInAction";
+        const headers = {
+            "Origin": "https://render-web.shuqireader.com",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json, text/plain, */*",
+            "Host": "ocean.shuqireader.com",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 AliApp(shuqi/4.3.1.0) WindVane/8.6.1 Shuqi (iPhone12,1__shuqi__v4.3.1.0) 828x1792 Winding(WV_2) WK",
+            "Referer": "https://render-web.shuqireader.com/render/sq-welfare/page/welfare_page_v2/?serviceWorkerOn=1&stopPullRefresh=1&from=ShuqiTab&upf=20363&sdk=14.7.1&utdid=YERG%2BZnUTYMDAPsrjAcGHcU5&ustatus=1&first_placeid=111111&net_env=wifi&placeid=111111&user_id=2019911775&sn=78C6E34BF50A1848A67BA8399A29DC02653CF597&umidtoken=11pLbfxLOvozHjV8HI4SmuooxWoVgGYz&msv=8.0.0&brand=Apple&imei=DDF81B66FDC72803470D23BDE16568D88E7B462C&skinVersionPrefix=1&appVer=4.3.1.0&skinActiveColor=0F9970&manufacturer=Apple&session=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMDE5OTExNzc1IiwidXRkaWQiOiIiLCJpbWVpIjoiRERGODFCNjZGREM3MjgwMzQ3MEQyM0JERTE2NTY4RDg4RTdCNDYyQyIsInNuIjoiNzhDNkUzNEJGNTBBMTg0OEE2N0JBODM5OUEyOURDMDI2NTNDRjU5NyIsImV4cCI6MTYzMzExMjg2NywidXNlcklkIjoiMjAxOTkxMTc3NSIsImlhdCI6MTYzMjU5NDQ2Nywib2FpZCI6IiIsInBsYXRmb3JtIjoiaU9TIn0.JvLZ53xchTPzIoQNZlkoShnLcYJBc0IKHP3DHMDmAd4P4XGnfteOZyWZssLONWRsWuqeE4CzBx_wRcrF5AVHkg&skinColor=23B383&platform=iOS&ver=210111&mod=iPhone11&statusBarHeight=44.000000&skinVersion=1&wh=828x1792&soft_id=21&utype=vip&skinId=999&idfa=00000000-0000-0000-0000-000000000000",
+            "Content-Length": "2005",
+            "Accept-Language": "zh-cn"
+        };
+        const body = "clientTimestamp=1632595879&position=501&signInType=1&wua=HIVW_%2Fcwn3yjQLuTMFINWc3PmezA8PscAJuBxTKs%2BthpCEjKSgnafDCutgnbkkM8Oe9ZdwlG%2BiPDE%2FYiXZdVqt4RQPQATuw%2BDiqGtEN9837JXGN8ptFU8q4jkeSzpDRMOSDbmJeBMF0kR%2F2wbYlJ%2BrzeCNO6IUkkM1U4NzzHGqFp8aWD4K5g4ujKUJg8AA9ZrY%2BWxaRQR%2BuKiiFyKK1k7O6Pq2s%2Fv5cpXOGUYnJcO%2FsZ3ELDyHtNQeo8Pc3YEzjuTjMuRE1uy9yOjhZxWJ97V3HPGH11Y8asMt5t3cdzwZx%2FWNnRAoAGBayBGrwfHI%2FLR1VJmYDmWnRzGDJrv7LagPEMsO9KpxeFnv0pbHsWMlVDnOD8%3D&miniWua=HHnB_rb4IGExQFZYfeJ2iEFzCYL5sLySfldthBQCik9tFFuHC3jG8tmxnOb2ZC9VPyLK%2B4EqwCwSDD99DhAvLURCwqSeKqnnGp1VMyyD%2FqLR52m5jN%2BNuRDEzzVHhQYO%2FpnF2aa3cn2CGbrWKb7kp0ohvwg%3D%3D&userId=2019911775&umidtoken=11pLbfxLOvozHjV8HI4SmuooxWoVgGYz&secureDeviceType=ios&secureAppName=wenxue-activity-proxy&platform=1&appVer=4.3.1.0&placeId=111111&timestamp=1632595879&sqSv=1.0&sign=e469b42fab58e37291f7696b0acd125d&key=sq_h5_gateway&_public=serviceWorkerOn%3D1%26stopPullRefresh%3D1%26from%3DShuqiTab%26upf%3D20363%26sdk%3D14.7.1%26utdid%3DYERG%252BZnUTYMDAPsrjAcGHcU5%26ustatus%3D1%26first_placeid%3D111111%26net_env%3Dwifi%26placeid%3D111111%26user_id%3D2019911775%26sn%3D78C6E34BF50A1848A67BA8399A29DC02653CF597%26umidtoken%3D11pLbfxLOvozHjV8HI4SmuooxWoVgGYz%26msv%3D8.0.0%26brand%3DApple%26imei%3DDDF81B66FDC72803470D23BDE16568D88E7B462C%26skinVersionPrefix%3D1%26appVer%3D4.3.1.0%26skinActiveColor%3D0F9970%26manufacturer%3DApple%26session%3DeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMDE5OTExNzc1IiwidXRkaWQiOiIiLCJpbWVpIjoiRERGODFCNjZGREM3MjgwMzQ3MEQyM0JERTE2NTY4RDg4RTdCNDYyQyIsInNuIjoiNzhDNkUzNEJGNTBBMTg0OEE2N0JBODM5OUEyOURDMDI2NTNDRjU5NyIsImV4cCI6MTYzMzExMjg2NywidXNlcklkIjoiMjAxOTkxMTc3NSIsImlhdCI6MTYzMjU5NDQ2Nywib2FpZCI6IiIsInBsYXRmb3JtIjoiaU9TIn0.JvLZ53xchTPzIoQNZlkoShnLcYJBc0IKHP3DHMDmAd4P4XGnfteOZyWZssLONWRsWuqeE4CzBx_wRcrF5AVHkg%26skinColor%3D23B383%26platform%3D1%26ver%3D210111%26mod%3DiPhone11%26statusBarHeight%3D44.000000%26skinVersion%3D1%26wh%3D828x1792%26soft_id%3D21%26utype%3Dvip%26skinId%3D999%26idfa%3D00000000-0000-0000-0000-000000000000";
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
 
+        $.post(request, async (error, response, data) => {
+            try {
+                $.log(data);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
+}
 
 
 
