@@ -20,6 +20,8 @@ async function all() {
     await $.wait(2000);
     await share();
     await $.wait(1000);
+    await jsdailysign();
+    await $.wait(2000);
     await jsshare();
     await $.wait(1000);
     await jsshucheng();
@@ -42,6 +44,37 @@ async function all() {
     await receive();
     await $.wait(1000);
 
+}
+function jsdailysign() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ocean.shuqireader.com/api/activity/xapi/signin/v5/signInAction";
+        const headers = {
+            "Origin": "https://render-web.shuqireader.com",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json, text/plain, */*",
+            "Host": "ocean.shuqireader.com",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 AliApp(shuqi/1.0.5.0) WindVane/8.6.1 Shuqi-Lite (iPhone12,1__shuqi__v1.0.5.0) 828x1792 Winding(WV_2) WK",
+            "Referer": "https://render-web.shuqireader.com/render/lite-welfare/page/golden_house/?from=ShuqiTab&serviceWorkerOn=1&stopPullRefresh=1&sdk=14.7.1&ustatus=1&umidtoken=xJtLe65LOqgokDV8IJn%2BYVtwyJysrAFT&net_env=wifi&placeid=111111&user_id=2050108665&sn=C7C46257EE0D130587491634C830B4AB39C5E099&msv=10.0.0&brand=Apple&imei=0E72DF90618EC27BB135964C32C1037269B31639&appVer=1.0.5.0&manufacturer=Apple&session=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMDUwMTA4NjY1IiwidXRkaWQiOiIiLCJpbWVpIjoiZmFzdF8wRTcyREY5MDYxOEVDMjdCQjEzNTk2NEMzMkMxMDM3MjY5QjMxNjM5Iiwic24iOiJmYXN0X0M3QzQ2MjU3RUUwRDEzMDU4NzQ5MTYzNEM4MzBCNEFCMzlDNUUwOTkiLCJleHAiOjE2MzMwNjQ5OTAsInVzZXJJZCI6IjIwNTAxMDg2NjUiLCJpYXQiOjE2MzI1NDY1OTAsIm9haWQiOiIiLCJwbGF0Zm9ybSI6IjExNiJ9.2GIWSKtKb5dzm4AsZLWNnZ2-fYbFeissZjRPrhY47yPY05UTvbSUvvA5i69sDOf0IDStxzQ2fu66ybt4b1ePdQ&statusBarHeight=44.000000&platform=116&ver=210331&mod=iPhone11&wh=828x1792&utype=vip&utdid=YGbGS5w4dw4DAGWsyK50KUEx&idfa=00000000-0000-0000-0000-000000000000",
+            "Accept-Language": "zh-cn"
+        };
+        const body = "clientTimestamp=1632673615&position=601&signInType=1&wua=ktgi_qXqdOC1yJtEKeJb5Rp04aBA7mCkNTH3%2BU0aEnv%2BSvVERfPuTsFiB8nQNhEmrd4YXmwZ1d53W3kxLnWpZEtpVfNDOe%2BUxCGATgikG6ILKZeh7%2B5JB0bHvjvNdoAJGZficcQLf0EuBjoqGmyYQcdvf7KccSVvpzJ8C3%2FG4VV9mmYM3VRC7mclcj29BYMoQj2zBCnokxxYH2Q%2FoAzdBIyQGmKmjEPdYraeqIT%2FL4bzUCwWtgvK1h8NHNgmlhVWURVJiWdtVe%2Fvy5p7VeIRfhOB9DqYv3paE%2FWjFpTPjN1jTfjxRT%2BkAa8D0IQLm7mMfGNi8Hwg7zhUvHYtl0NXTn%2B7OnLG4hfErguqu7lrplVjarLM%3D&miniWua=HHnB_%2FTL47H3049XODYYbyiSo3RczDV8825ZFiIUyxpC5m1Z146AtaMEjGTlLHYh0jLxdnI9qpR3xidkehWOEAxMSNGxQ%2FzLNpXB3dsCGYR%2BombSS3vgjWGbBI9FAxTeXgnw9XUFNxrCBBRWTUfbZL0%2FxOg%3D%3D&userId=2050108665&umidtoken=xJtLe65LOqgokDV8IJn%2BYVtwyJysrAFT&secureDeviceType=ios&secureAppName=wenxue-activity-proxy&platform=116&appVer=1.0.5.0&placeId=111111&timestamp=1632673615&sqSv=1.0&sign=375a2415897d3066a5742e9dc577f0c3&key=sq_h5_gateway&_public=from%3DShuqiTab%26serviceWorkerOn%3D1%26stopPullRefresh%3D1%26sdk%3D14.7.1%26ustatus%3D1%26umidtoken%3DxJtLe65LOqgokDV8IJn%252BYVtwyJysrAFT%26net_env%3Dwifi%26placeid%3D111111%26user_id%3D2050108665%26sn%3DC7C46257EE0D130587491634C830B4AB39C5E099%26msv%3D10.0.0%26brand%3DApple%26imei%3D0E72DF90618EC27BB135964C32C1037269B31639%26appVer%3D1.0.5.0%26manufacturer%3DApple%26session%3DeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyMDUwMTA4NjY1IiwidXRkaWQiOiIiLCJpbWVpIjoiZmFzdF8wRTcyREY5MDYxOEVDMjdCQjEzNTk2NEMzMkMxMDM3MjY5QjMxNjM5Iiwic24iOiJmYXN0X0M3QzQ2MjU3RUUwRDEzMDU4NzQ5MTYzNEM4MzBCNEFCMzlDNUUwOTkiLCJleHAiOjE2MzMwNjQ5OTAsInVzZXJJZCI6IjIwNTAxMDg2NjUiLCJpYXQiOjE2MzI1NDY1OTAsIm9haWQiOiIiLCJwbGF0Zm9ybSI6IjExNiJ9.2GIWSKtKb5dzm4AsZLWNnZ2-fYbFeissZjRPrhY47yPY05UTvbSUvvA5i69sDOf0IDStxzQ2fu66ybt4b1ePdQ%26statusBarHeight%3D44.000000%26platform%3D116%26ver%3D210331%26mod%3DiPhone11%26wh%3D828x1792%26utype%3Dvip%26utdid%3DYGbGS5w4dw4DAGWsyK50KUEx%26idfa%3D00000000-0000-0000-0000-000000000000";
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                $.log(data);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
 }
 
   function vedioreward426() {
